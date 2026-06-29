@@ -1,0 +1,23 @@
+.Preview{
+  width : 40%;
+  display : flex;
+  flex-direction : column;
+  color : white;
+  border : 1px solid hsla(0, 0%, 100%, 0.1);
+}
+
+#preview_topbar{
+  display : flex;
+  background-color : hsl(0, 0%, 10%);
+  font-size : 18px;
+  padding : 5px 10px;
+}
+#preview_topbar p{
+  margin-left : 10px;
+}
+
+#preview_area{
+  flex : 1;
+  background-color : hsl(0, 0%, 30%);
+  padding : 10px 10px;
+}
