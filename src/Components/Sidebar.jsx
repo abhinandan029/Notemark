@@ -1,20 +1,26 @@
 import '../styles/Sidebar.css'
 
-function Sidebar(){
+function Sidebar( {notes, activeNote, onSelect, onAdd, activeNoteId}){
   
-
-
   return (
     <div className="Sidebar">
 
       <div id="header">
         <p id="app_name">Notemark</p>
-        <button> + New</button>
+        <button onClick={onAdd}> + New</button>
       </div>
       
       <div id="notes_container">
-        <div id="note">note 1</div>
         
+        {notes.map( 
+          (note) => {return (
+          <div id={`${note.id === activeNoteId? "active_note" : "note"}`} 
+            key={note.id} 
+            onClick={() => onSelect(note.id)}>
+              {note.title}
+          </div>); 
+        })}
+
       </div>
 
     

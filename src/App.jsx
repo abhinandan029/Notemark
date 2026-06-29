@@ -6,11 +6,13 @@ import Preview from './Components/Preview.jsx'
 
 
 function App() {
+  const {notes, activeNote, setActiveNoteId, addNote, updateNote} = useNotes();
+
   return (
     <>
-      <Sidebar />
-      <Editor />
-      <Preview />
+      <Sidebar notes={notes} activeNoteId={activeNote?.id} onSelect={setActiveNoteId} onAdd={addNote} />
+      <Editor note={activeNote} onChange={(body) =>activeNote && updateNote(activeNote.id, {body} )}/>
+      <Preview body={activeNote?.body || ""}/>
 
     </>
   );
