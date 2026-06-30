@@ -19,7 +19,7 @@
 .Editor textarea{
   flex : 1;
   resize : none;
-  background-color : hsl(0, 0%, 30%);
+  background-color : hsl(0, 0%, 20%);
   padding : 10px 10px;
   border : none;
   color : white;

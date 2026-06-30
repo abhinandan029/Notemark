@@ -9,7 +9,7 @@
 }
 #header{
   display : flex;
-  padding : 10px;
+  padding : 20px;
   align-items : center; 
   border : 1px solid hsl(0, 0%, 100%, 0.1);
 }
@@ -35,6 +35,20 @@
   transform : scale(1.1);
 }
 
+#search_bar{
+  padding : 5px 10px;
+  font-size : 18px;
+  background-color : hsl(0, 0%, 10%, 0.1);
+  border : 1px solid hsla(0, 0%, 100%, 0.4);
+  border-left : none;
+  border-right : none;
+  color : white;
+}
+#search_bar:focus{
+  outline : 1px solid hsla(0, 0%, 100%, 0.3);
+}
+
+
 #notes_container{
   display : flex;
   flex-direction : column;
@@ -45,9 +59,11 @@
 }
 
 #notes_container #note{
-  border : 1px solid hsl(0, 0%, 100%, 0.1);
+  border : 1px solid hsl(0, 0%, 100%,0.1);
   padding : 10px 20px;
-  font-size : 18px;
+  font-size : 20px;
+  display : flex;
+  align-items : center;
 }
 #note:hover{
   background-color : hsl(0, 0%, 30%);
@@ -56,6 +72,70 @@
 #notes_container #active_note{
   border : 1px solid hsl(0, 0%, 100%, 0.1);
   padding : 10px 20px;
+  font-size : 20px;
+  background-color : hsl(0, 0%, 100%,0.1);
+  display : flex;
+  align-items : center;
+  #edit_options{
+    display : flex;
+  }
+  transition : background-color 0.5s ease-in-out;
+}
+
+#tags{
+  font-size : 16px;
+  color : hsl(0, 0%, 80%);
+}
+#updatedTime{
+  font-size : 16px;
+  color : hsl(0, 0%, 80%);
+}
+
+#edit_options{
+  margin-left : auto;
+  display : none;
+  align-items : center;
+}
+
+#delete_btn{
+  color : hsl(0, 0%, 70%);
+  border : none;
+  cursor : pointer;
+  margin :5px;
   font-size : 18px;
+  transition : transform 0.3s ease-in-out;
+}
+#delete_btn:hover{
+  color : hsl(0, 0%, 100%);
+  transform : scale(1.1);
+}
+
+#rename_btn{
+  color : hsl(0, 0%, 70%);
+  border : none;
+  cursor : pointer;
+  margin-left : auto;
+  font-size : 25px;
+  margin :5px;
+  transition : transform 0.3s ease-in-out;
+}
+
+#rename_btn:hover{
+  color : hsl(0, 0%, 100%);
+  transform : scale(1.1);
+}
+
+#rename_title{
+  padding : 0px 10px;
+  width : 60%;
+  margin-bottom : 5px;
   background-color : hsl(0, 0%, 30%);
+  border-radius : 5px;
+  border : 1px hsl(0, 0%, 10%, 0.1);
+}
+
+#rename_title:focus{
+  outline : 1px solid  hsla(0, 0%, 100%, 0.5);
+  color : white;
+  font-size : 20px;
 }

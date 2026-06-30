@@ -1,12 +1,20 @@
 import '../styles/Editor.css'
-import { FaEdit } from "react-icons/fa";
+import { FaEdit } from "react-icons/fa"
 
-function Editor({note, onChange}){
+function Editor({notes, note, onChange}){
 
   return (
     <div className="Editor">
       <div id="editor_topbar"><FaEdit /><p>Editor</p></div>
-      <textarea placeholder="Start Writing Your Note...."  value={note?.body || ""} onChange={(e) => onChange(e.target.value)}></textarea>
+      
+      <textarea 
+        
+        placeholder={note == null ? "Create a New note" : "start Writing Your Note..."} 
+        value={note?.body || ""} 
+        onChange={(e) => onChange(e.target.value)}>
+
+      </textarea>
+
     </div>
   );
 

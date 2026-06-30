@@ -20,7 +20,7 @@ export function useNotes(){
 
   useEffect(() => {
     localStorage.setItem("notemark-notes", JSON.stringify(notes));
-    setActiveNoteId(notes[0].id)
+    setActiveNoteId(activeNote?.id || notes[0]?.id || null)
   }, [notes]);
 
   const [activeNoteId, setActiveNoteId] = useState(initialNote.id);
@@ -54,6 +54,13 @@ export function useNotes(){
 
   }
 
-  return {notes, activeNote, setActiveNoteId, addNote, updateNote} ;
+  function deleteNote(id){
+    setNotes((prevNotes) => {
+      const updated = prevNotes.filter((note) => note.id !== id)
+      return updated;
+    })
+  }
+
+  return {notes, activeNote, setActiveNoteId, addNote, updateNote, deleteNote} ;
 
 }
