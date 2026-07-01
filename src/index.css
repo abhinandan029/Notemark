@@ -1,3 +1,44 @@
+:root {
+  --primary-bg: hsl(0, 0%, 100%);      
+  --secondary-bg: hsl(0, 0%, 90%);
+  --ternary-bg : hsl(0, 0%, 75%);
+  --hover-bg: hsl(0, 0%, 80%);     
+  --active-bg: hsl(0, 25%, 100%);
+   
+
+  --primary-text: hsl(0, 0%, 0%);   
+  --secondary-text: hsl(0, 0%, 30%); 
+
+  --border-color: hsla(220, 15%, 90%,0.9);   
+  --border-strong: hsl(220, 15%, 80%);  
+
+  --accent: hsl(220, 100%, 50%);         
+  --accent-hover: hsl(220, 70%, 70%);
+
+  --delete: hsl(0, 100%, 50%);
+  --code :  hsl(130, 100%, 20%);           
+}
+
+.theme {
+  --primary-bg: hsl(0, 0%, 10%);
+  --secondary-bg: hsl(0, 0%, 20%);
+  --ternary-bg : hsl(0, 0%, 60%);
+  --hover-bg: hsl(0, 0%, 30%);
+  --active-bg: hsl(0, 0%, 10%);
+
+  --primary-text: hsl(0, 0%, 100%);
+  --secondary-text: hsl(0, 0%, 40%);
+
+  --border-color: hsl(0, 0%, 20%, 0.9);
+  --border-strong: hsl(0, 0%, 30%);
+
+  --accent: hsl(220, 70%, 60%);
+  --accent-hover: hsl(220, 70%, 65%);
+
+  --delete: hsl(0, 100%, 50%);
+  --code : hsl(120, 100%, 60%);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -10,10 +51,11 @@ html, body {
   overflow: hidden;
 }
 
+
 #root {
   height: 100%;
   width: 100%;
   overflow: hidden;
   display : flex;
-  background-color : hsl(0, 0%, 30%);
+  font-family : arial;
 }

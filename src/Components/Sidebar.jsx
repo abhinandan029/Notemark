@@ -1,22 +1,33 @@
 import {useState} from 'react'
+import {extractTags} from '../utils/extractTags.jsx'
+import {timeAgo} from '../utils/timeAgo.jsx'
 
 import '../styles/Sidebar.css'
-import {FaTrash} from 'react-icons/fa6'
+import {FaTrash, FaCircleMinus, FaMoon, FaSun} from 'react-icons/fa6'
 import { CgRename } from "react-icons/cg";
 
-function Sidebar( {notes, activeNote, onSelect, onAdd, activeNoteId, onDelete, onRename}){
+function Sidebar( {notes, activeNote, onSelect, onAdd, activeNoteId, onDelete, onRename,theme, setTheme}){
   
   const [editingId, setEditingId] = useState(null);
   const [newTitle, setNewTitle] = useState("");
 
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedTag, setSelectedTag] = useState(null);
 
   function searchNotes(){
-    const filteredNotes = notes.filter(
+    let filteredNotes = notes.filter(
       (note) => {return ((note.title || "").toLowerCase().startsWith(searchQuery.toLowerCase()))}  
     );
 
-    return filteredNotes;
+    if(selectedTag){
+      filteredNotes = filteredNotes.filter(
+        (note) => extractTags(note.body).includes(selectedTag)
+      );
+    }
+
+    const sortedNotes = [...filteredNotes].sort((a, b) => b.updatedAt - a.updatedAt);
+
+    return sortedNotes;
   }
 
   function editing(note){
@@ -29,12 +40,24 @@ function Sidebar( {notes, activeNote, onSelect, onAdd, activeNoteId, onDelete, o
     setEditingId(null);
   }
 
+  
+
   return (
     <div className="Sidebar">
 
       <div id="header">
         <p id="app_name">Notemark</p>
-        <button onClick={onAdd}> + New</button>
+        <div id="controls">
+          
+          <button onClick={onAdd} id="create"> + New</button>
+          <button 
+            id="theme"
+            title={theme === "dark" ? "Switch to light theme." : "Switch to dark theme"} 
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
+              {theme === "dark" ? <FaSun /> : <FaMoon />}
+          </button>
+
+        </div>
       </div>
 
       <input 
@@ -46,13 +69,23 @@ function Sidebar( {notes, activeNote, onSelect, onAdd, activeNoteId, onDelete, o
 
       </input>
 
+      {selectedTag &&
+        <div id="selected_tag">
+          <p>Filtered by</p><div id="tag_pill"  onClick={() => setSelectedTag(null)}>{selectedTag}<FaCircleMinus id="remove_btn" /></div> 
+        </div>
+      }
+
 
       <div id="notes_container">
         
         {searchNotes().map( 
-          (note) => {return (
+          (note) => {
+            
+            const tags = extractTags(note.body);
+
+            return (
           <div 
-              id={`${note.id === activeNoteId? "active_note" : "note"}`} 
+            id={`${note.id === activeNoteId? "active_note" : "note"}`} 
               key={note.id} 
               onClick={() => onSelect(note.id)} 
             >
@@ -72,12 +105,26 @@ function Sidebar( {notes, activeNote, onSelect, onAdd, activeNoteId, onDelete, o
                 </input>) : 
                 (<p id="title">{note.title}</p>) 
               }
+
+              <div id="updated_time">{timeAgo(note.updatedAt)}</div>
+
+              {
+                tags.length > 0 && 
+                (<div id="tag_container">{tags.map((tag, index) => {
+                  return <span 
+                          key={index} 
+                          id="tag_pill" 
+                          onClick={(e) => {e.stopPropagation(); setSelectedTag(tag === selectedTag ? null : tag)}}>{tag}
+                  </span>
+
+                })}</div>)
+              }
                 
             </div>
               
             <div id="edit_options">
-              <FaTrash id="delete_btn"  onDoubleClick={(e) => {e.stopPropagation(); onDelete(note.id);} } title="Delete"/>
-              <CgRename id="rename_btn" title="Rename"  onDoubleClick={(e) =>{e.stopPropagation(); editing(note);}} />
+              <FaTrash id="delete_btn"  onClick={(e) => {e.stopPropagation(); onDelete(note.id);} } title="Delete"/>
+              <CgRename id="rename_btn" title="Rename"  onClick={(e) =>{e.stopPropagation(); editing(note);}} />
             </div>
               
           </div>); 

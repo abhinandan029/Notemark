@@ -2,93 +2,112 @@
   height : 100%;
   width : 20%;
   border : none;
-  color : white;
-  background-color : hsl(0, 0%, 10%);
+  color : var(--primary-text);
+  background-color : var(--secondary-bg);
   display :flex;
   flex-direction : column;
 }
 #header{
   display : flex;
-  padding : 20px;
+  padding : 20px 10px;
   align-items : center; 
-  border : 1px solid hsl(0, 0%, 100%, 0.1);
+  justify-content : space-evenly;
+  border : 1px solid var(--border-color);
 }
 
 #header p{
   margin-left  : 0px;
   font-size : 30px;
+  text-decoration : bold; 
 }
 
-#header button {
-  margin-left : auto;
+#controls{
+  display : flex;
+  margin-left :auto;
+}
+
+#controls button {
   font-size : 20px;
-  padding : 5px 15px;
   border-radius : 5px; 
-  color : white;
-  background-color : hsl(0, 0%, 30%);
-  border : none;
+  color : var(--primary-text);
+  background-color : var(--primary-bg);
+  border : 1px solid var(--broder-color);
   cursor : pointer;
   transition : transform 0.3s ease-in-out;
 }
+#controls #theme{
+  margin-left : 5px;
+  padding: 5px 5px;
+}
+#controls #create{
+  padding : 5px 20px;
+}
 #header button:hover{
-  background-color : hsl(0, 0%, 40%);
-  transform : scale(1.1);
+  background-color : var(--hover-bg);
+  transform : scale(1.05);
 }
 
 #search_bar{
+  width : 100%;
   padding : 5px 10px;
   font-size : 18px;
-  background-color : hsl(0, 0%, 10%, 0.1);
-  border : 1px solid hsla(0, 0%, 100%, 0.4);
+  background-color : var(--secondary-bg);
+  border : 1px solid var(--border-strong);
   border-left : none;
   border-right : none;
-  color : white;
+  color : var(--primary-text);
 }
 #search_bar:focus{
-  outline : 1px solid hsla(0, 0%, 100%, 0.3);
+  outline : 1px solid var(--border-color);
 }
 
 
 #notes_container{
   display : flex;
   flex-direction : column;
-  border : 1px solid hsl(0, 0%, 100%, 0.1);
+  border :none;
   overflow : auto;
-  scrollbar-color : hsl(0, 0%, 20%) transparent;
+  scrollbar-color : var(--ternary-bg) transparent;
   scrollbar-width : thin;
 }
 
 #notes_container #note{
-  border : 1px solid hsl(0, 0%, 100%,0.1);
+  border : 1px solid var(--border-color);
   padding : 10px 20px;
   font-size : 20px;
   display : flex;
   align-items : center;
+  transition : 0.3s ease-out;
 }
 #note:hover{
-  background-color : hsl(0, 0%, 30%);
+  background-color : var(--hover-bg);
 }
 
 #notes_container #active_note{
-  border : 1px solid hsl(0, 0%, 100%, 0.1);
+  border : none;
   padding : 10px 20px;
   font-size : 20px;
-  background-color : hsl(0, 0%, 100%,0.1);
+  background-color : var(--active-bg);
   display : flex;
   align-items : center;
   #edit_options{
     display : flex;
   }
+  #tag_pill{
+    background-color : var(--secondary-bg);
+  }
   transition : background-color 0.5s ease-in-out;
+}
+
+#updated_time{
+  font-size : 14px;
+  color : var(--secondary-text);
+  margin-top : 1px;
 }
 
 #tags{
   font-size : 16px;
-  color : hsl(0, 0%, 80%);
-}
-#updatedTime{
-  font-size : 16px;
-  color : hsl(0, 0%, 80%);
+  color : var(--secondary-text);
 }
 
 #edit_options{
@@ -98,7 +117,7 @@
 }
 
 #delete_btn{
-  color : hsl(0, 0%, 70%);
+  color : var(--primary-text);
   border : none;
   cursor : pointer;
   margin :5px;
@@ -106,12 +125,12 @@
   transition : transform 0.3s ease-in-out;
 }
 #delete_btn:hover{
-  color : hsl(0, 0%, 100%);
+  color : var(--delete);
   transform : scale(1.1);
 }
 
 #rename_btn{
-  color : hsl(0, 0%, 70%);
+  color : var(--primary-text);
   border : none;
   cursor : pointer;
   margin-left : auto;
@@ -121,7 +140,7 @@
 }
 
 #rename_btn:hover{
-  color : hsl(0, 0%, 100%);
+  color : var(--accent-hover);
   transform : scale(1.1);
 }
 
@@ -129,13 +148,52 @@
   padding : 0px 10px;
   width : 60%;
   margin-bottom : 5px;
-  background-color : hsl(0, 0%, 30%);
+  background-color : var(--secondary-bg);
   border-radius : 5px;
-  border : 1px hsl(0, 0%, 10%, 0.1);
+  border : 1px var(--border-strong);
 }
 
 #rename_title:focus{
-  outline : 1px solid  hsla(0, 0%, 100%, 0.5);
-  color : white;
+  outline : 1px solid  var(--border-strong);
+  color : var(--primary-text);
   font-size : 20px;
+}
+
+#tag_container{
+  display: flex;
+  flex-wrap : wrap;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+#tag_pill{
+  font-size: 15px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background-color: var(--ternary-bg);
+  color: black;
+  cursor : pointer;
+}
+
+#selected_tag{
+  display : flex;
+  padding : 5px 20px;
+  background-color : var(--secondary-bg);
+}
+
+#selected_tag p{
+  margin-right : 10px;
+}
+
+#selected_tag #tag_pill{
+  background-color : var(--primary-bg);
+  color : var(--primary-text);
+  display : flex;
+  align-items : center;
+}
+
+#remove_btn{
+  color : var(--delete);
+  margin-left : 5px;
+  font-size : 12px;
 }
