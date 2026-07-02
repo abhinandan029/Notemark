@@ -2,6 +2,8 @@
   width : 40%;
   display : flex;
   flex-direction : column;
+  height : 100%;
+  overflow : hidden;
   color : var(--primary-text);
   border : 1px solid var(--border-color);
 }
@@ -16,14 +18,21 @@
   margin-left : 10px;
 }
 
+#export_pdf{
+  margin-left : auto;
+  margin-right : 10px;
+  color : var(--primary-text);
+  cursor : pointer;
+}
+
 #preview_area{
-  flex : 1;
   background-color : var(--primary-bg);
   padding : 10px 15px;
   display : flex;
   flex-direction : column;
   height : 100%;
-  overflow : auto;
+  overflow-y : auto;
+  min-height : 0;
   scrollbar-color  : var(--ternary-bg) transparent;
   scrollbar-width : thin;
 }
@@ -31,18 +40,20 @@
 #preview_area h1{
   border-bottom: 1px solid var(--secondary-text);
   margin: 5px 0 10px 0px;
+  padding-top : 10px;
   padding-bottom : 5px;
 }
 
 #preview_area h2, #preview_area h3 { 
-  margin: 10px 0 5px 0px;
+  margin: 5px 0 5px 0px;
+  padding-top : 10px;
   border-bottom : 1px solid var(--secondary-bg)
 }
 
 
 
 #preview_area p { 
-  line-height: 1.4; 
+  line-height: 1.6; 
   margin : 0px 0px 0px 0px; 
   padding-top : 5px; 
   padding-bottom : 5px;
@@ -50,18 +61,18 @@
 }
 
 #preview_area code { 
-  background: var(--secondary-bg); 
+  background: var(--code); 
   padding: 2px 0px; 
   border-radius: 4px; 
-  line-height: 1.5; 
-  color : var(--code);
+  line-height: 1.6; 
   font-size : 14px;
   font-family : monospace;
   margin-bottom : 10px;
 }
 
 #preview_area pre {
-  background: var(--secondary-bg); 
+  background: var(--code);
+  border : 3px solid var(--border-strong); 
   padding: 10px 30px; 
   border-radius: 6px;
   margin : 10px 0px 10px 0px;
@@ -98,5 +109,26 @@
 
 #preview_area li {
   margin-bottom: 4px;
-  line-height: 1.4;
+  line-height: 1.6;
+}
+
+#preview_area table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top : 15px;
+  margin-bottom : 15px;
+}
+
+#preview_area th,
+#preview_area td {
+  border: 1px solid var(--border-color);
+  padding: 8px 12px;
+  text-align: center;
+}
+
+#preview_area th {
+  background: var(--secondary-bg);
+  border: 1px solid var(--border-strong);
+  font-weight: 500;
+  color: var(--primary-text);
 }

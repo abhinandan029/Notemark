@@ -4,5 +4,5 @@ export function extractTags(text){
   }
 
   const matches = text.match(/#[a-zA-Z0-9_]+/g);
-  return matches || [];
+  return matches ? [...new Set(matches)] : [];
 } 

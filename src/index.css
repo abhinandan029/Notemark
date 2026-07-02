@@ -16,7 +16,8 @@
   --accent-hover: hsl(220, 70%, 70%);
 
   --delete: hsl(0, 100%, 50%);
-  --code :  hsl(130, 100%, 20%);           
+  --code :  hsl(0, 0%, 100%);       
+  --pill : hsl(0, 30%, 60%);    
 }
 
 .theme {
@@ -36,7 +37,8 @@
   --accent-hover: hsl(220, 70%, 65%);
 
   --delete: hsl(0, 100%, 50%);
-  --code : hsl(120, 100%, 60%);
+  --code : hsl(0, 0%, 100%);
+  --pill : hsl(0, 30%, 60%); 
 }
 
 * {

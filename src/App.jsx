@@ -11,6 +11,21 @@ function App() {
 
   const [theme, setTheme] = useChangeTheme();
 
+  function exportNote(note){
+    if (!note) return ;
+
+    const blob = new Blob([note.body], {type : "text/markdown"});
+
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url ;
+    a.download = `${note.title || "untitled"}.md`;
+    a.click();
+
+    URL.revokeObjectURL(url);
+  }
+
   return (
     <>
       
@@ -27,10 +42,11 @@ function App() {
       
       <Editor 
         note={activeNote} 
-        onChange={(body) =>activeNote && updateNote(activeNote.id, {body} )}
+        onChange={(body) =>activeNote && updateNote(activeNote.id, {body} ) }
+        onExport={exportNote}
       />
         
-      <Preview body={activeNote?.body || ""}/>
+      <Preview body={activeNote?.body || ""} title={activeNote?.title} />
       
     </>
   );

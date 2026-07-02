@@ -1,11 +1,14 @@
 import '../styles/Editor.css'
-import { FaEdit } from "react-icons/fa"
+import { FaEdit, FaDownload} from "react-icons/fa"
 
-function Editor({notes, note, onChange}){
+function Editor({notes, note, onChange, onExport}){
 
   return (
     <div className="Editor">
-      <div id="editor_topbar"><FaEdit /><p>Editor</p></div>
+      <div id="editor_topbar">
+        <FaEdit /><p>Editor</p>
+        <FaDownload id="download_btn" onClick={() => onExport(note)} title="download '.md' file" />
+      </div>
       
       <textarea 
         

@@ -94,7 +94,7 @@
     display : flex;
   }
   #tag_pill{
-    background-color : var(--secondary-bg);
+    background-color : var(--pill);
   }
   transition : background-color 0.5s ease-in-out;
 }
@@ -170,8 +170,8 @@
   font-size: 15px;
   padding: 2px 8px;
   border-radius: 10px;
-  background-color: var(--ternary-bg);
-  color: black;
+  background-color: var(--pill);
+  color: var(--primary-color);
   cursor : pointer;
 }
 

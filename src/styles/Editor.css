@@ -16,6 +16,13 @@
   margin-left : 10px;
 }
 
+#download_btn{
+  margin-left : auto ;
+  margin-right : 10px;
+  cursor : pointer;
+  color : var(--primary-text);
+}
+
 .Editor textarea{
   flex : 1;
   resize : none;
