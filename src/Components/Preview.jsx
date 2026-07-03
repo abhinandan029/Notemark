@@ -6,10 +6,8 @@ import remarkEmoji from "remark-emoji"
 import remarkToc from "remark-toc"
  
 import rehypeKatex from "rehype-katex"
-import rehypeHighlight from "rehype-highlight"
 import rehypeSlug from "rehype-slug"
 import "katex/dist/katex.min.css"
-import "highlight.js/styles/github.css"
 
 import html2pdf from 'html2pdf.js'
 
@@ -71,7 +69,7 @@ function Preview({body, title}){
       <div id="preview_area" ref={previewRef}>
         <ReactMarkdown 
           remarkPlugins={[remarkGfm, remarkMath,remarkEmoji,remarkToc]} 
-          rehypePlugins={[rehypeKatex,rehypeHighlight,rehypeSlug]}>
+          rehypePlugins={[rehypeKatex,rehypeSlug]}>
           
           {body}
 
