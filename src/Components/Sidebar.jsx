@@ -2,11 +2,13 @@ import {useState} from 'react'
 import {extractTags} from '../utils/extractTags.jsx'
 import {timeAgo} from '../utils/timeAgo.jsx'
 
-import '../styles/Sidebar.css'
-import {FaTrash, FaCircleMinus, FaMoon, FaSun} from 'react-icons/fa6'
+
+import '../index.css'
+
+import {FaTrash, FaCircleMinus, FaMoon, FaSun, FaFileCirclePlus} from 'react-icons/fa6'
 import { CgRename } from "react-icons/cg";
 
-function Sidebar( {notes, activeNote, onSelect, onAdd, activeNoteId, onDelete, onRename,theme, setTheme}){
+function Sidebar( {notes, activeNote, onSelect, onAdd, activeNoteId, onDelete, onRename,theme, setTheme, mobileView}){
   
   const [editingId, setEditingId] = useState(null);
   const [newTitle, setNewTitle] = useState("");
@@ -43,13 +45,13 @@ function Sidebar( {notes, activeNote, onSelect, onAdd, activeNoteId, onDelete, o
   
 
   return (
-    <div className="Sidebar">
+    <div className="Sidebar"   id={`Sidebar${mobileView === "Sidebar" ? "_mobile_active" : ""}`}>
 
       <div id="header">
         <p id="app_name">Notemark</p>
         <div id="controls">
           
-          <button onClick={onAdd} id="create"> + New</button>
+          <button onClick={onAdd} id="create"><FaFileCirclePlus /></button>
           <button 
             id="theme"
             title={theme === "dark" ? "Switch to light theme." : "Switch to dark theme"} 

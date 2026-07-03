@@ -13,10 +13,12 @@ import html2pdf from 'html2pdf.js'
 
 import {useRef, useEffect} from 'react'
 
-import '../styles/Preview.css'
+
+import '../index.css'
+
 import {FaEye, FaFilePdf} from 'react-icons/fa'
 
-function Preview({body, title}){
+function Preview({body, title, mobileView}){
 
   const previewRef = useRef(null);
   const scrollRef = useRef(null);
@@ -60,7 +62,7 @@ function Preview({body, title}){
   }
 
   return (
-    <div className="Preview">
+    <div className="Preview"  id={`Preview${mobileView === "Preview" ? "_mobile_active" : ""}`}>
       
       <div id="preview_topbar">
         <FaEye /><p>Preview</p>

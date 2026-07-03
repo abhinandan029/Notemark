@@ -55,8 +55,11 @@ export function useNotes(){
   }
 
   function deleteNote(id){
+
+    const confirm = window.confirm("Do you want to delete this note ??");
+    
     setNotes((prevNotes) => {
-      const updated = prevNotes.filter((note) => note.id !== id)
+      const updated =  (confirm ? prevNotes.filter((note) => note.id !== id) : prevNotes)
       return updated;
     })
   }
