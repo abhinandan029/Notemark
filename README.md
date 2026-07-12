@@ -1,6 +1,6 @@
 # Notemark 📝
 
-A minimal, fast markdown note-taking app built with React. Write notes in 
+A minimal, fast markdown note-taking app built with React. Write notes in
 markdown and see them rendered live — with search, tags, dark mode, and export.
 
 🔗 **Live Demo:** [your-vercel-link-here]
@@ -22,7 +22,7 @@ markdown and see them rendered live — with search, tags, dark mode, and export
 ## Tech Stack
 
 | Technology | Purpose |
-|------------|---------|
+| ------------ | -------- |
 | React + Vite | UI framework and build tool |
 | react-markdown | Markdown to HTML rendering |
 | remark-gfm | Tables, checkboxes, strikethrough |
