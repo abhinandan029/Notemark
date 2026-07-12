@@ -148,12 +148,13 @@ html, body {
   border-bottom: 1px solid var(--secondary-text);
   margin: 5px 0 10px 0px;
   padding-top : 10px;
-  padding-bottom : 5px;
+  padding-bottom : 10px;
 }
 
 #preview_area h2, #preview_area h3 { 
   margin: 5px 0 5px 0px;
   padding-top : 10px;
+  padding-bottom : 10px;
   border-bottom : 1px solid var(--secondary-bg)
 }
 

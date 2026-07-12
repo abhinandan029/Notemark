@@ -5,6 +5,7 @@ import remarkMath from "remark-math"
 import remarkEmoji from "remark-emoji"
  
 import rehypeKatex from "rehype-katex"
+import rehypehighlight from 'rehype-katex'
 import "katex/dist/katex.min.css"
 
 import html2pdf from 'html2pdf.js'
@@ -47,9 +48,33 @@ function Preview({body, title, mobileView}){
     html2pdf().set({
       margin : 10,
       filename : `${title || "untitled"}.pdf`,
-      htmal2canvas : {scale : 2, useCORS : true, scrollX : 0, scrollY : 0, logging : false, windowHeight : element.scrollHeight, height : element.scrollHeight},
-      jsPDF : {unit : "mm", format : "a4", orientation : "portrait"},
-      pagebreak: { mode: 'css', avoid: ['h1','h2','h3','p','table', 'tr', 'img', 'pre','blockquote']}
+      htmal2canvas : {
+        scale : 2, 
+        useCORS : true, 
+        scrollX : 0, 
+        scrollY : 0, 
+        logging : false, 
+        windowHeight : element.scrollHeight, 
+        height : element.scrollHeight,
+        onclone : (clonedDoc) =>{
+          const styles = document.querrySelectorAll('style, link[rel="stylesheet"]');
+          styles.forEach(style => {
+            clonedDoc.head.appendChild(style.cloneNode(true));
+          });
+        } 
+      },
+
+      jsPDF : {
+        unit : "mm", 
+        format : "a4", 
+        orientation : "portrait"
+      },
+      
+      pagebreak: {
+        mode: 'css', 
+        avoid: ['h1','h2','h3','p','table', 'tr', 'img', 'pre','blockquote']
+      }
+
     })
     .from(element)
     .save()
@@ -68,8 +93,8 @@ function Preview({body, title, mobileView}){
       </div>
       <div id="preview_area" ref={previewRef}>
         <ReactMarkdown 
-          remarkPlugins={[remarkGfm, remarkMath,remarkEmoji]} 
-          rehypePlugins={[rehypeKatex]}>
+          remarkPlugins={[remarkGfm, remarkMath, remarkEmoji]} 
+          rehypePlugins={[rehypeKatex, rehypehighlight ]}>
           
           {body}
 
